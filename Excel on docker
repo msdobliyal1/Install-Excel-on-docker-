@@ -1,0 +1,14 @@
+We Can use "microsoft/windowsservercore" docker imaage then install O365 package into it :)
+
+
+
+```
+FROM microsoft/windowsservercore
+RUN powershell.exe
+RUN powershell.exe mkdir c:\install
+COPY ConnectOffice365.ps1 c:\install
+COPY AdministrationConfig_3.msi c:\install
+COPY msoidcli_64.msi c:\install
+RUN msiexec /i c:\install\AdministrationConfig_3.msi
+RUN msiexec /i c:\install\msoidcli_64.msi
+```
